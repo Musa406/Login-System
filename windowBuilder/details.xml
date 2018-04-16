@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Information>
+
+<Account>
+      <userName>hhhh11</userName>
+      <Email>erer</Email>
+      <password>11</password>
+      <gender> female</gender>
+      <dateOfBirth>1 1 1996</dateOfBirth>
+   </Account>
+<Account>
+      <userName>niraj007</userName>
+      <Email>mrakha@</Email>
+      <password>2010</password>
+      <gender> female</gender>
+      <dateOfBirth>1/2/1997</dateOfBirth>
+   </Account>
+<Account>
+      <userName>musa</userName>
+      <Email>sdf</Email>
+      <password>111</password>
+      <gender> female</gender>
+      <dateOfBirth>1/1/1996</dateOfBirth>
+   </Account>
+<Account>
+      <userName>ss</userName>
+      <Email>ss</Email>
+      <password>ss</password>
+      <gender> female</gender>
+      <dateOfBirth>1/1/1996</dateOfBirth>
+   </Account>
+</Information>

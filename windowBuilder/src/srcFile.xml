@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<align> 
+
+	<align>
+		<name>Musa</name>
+		<salary>500</salary>
+	</align>
+	
+	<align>
+		<name>kabir</name>
+		<salary>200</salary>
+	</align>
+
+</align>
