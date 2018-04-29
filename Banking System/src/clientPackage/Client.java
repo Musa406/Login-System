@@ -19,13 +19,12 @@ import java.awt.Font;
 import javax.swing.JPasswordField;
 
 public class Client {
-	static Socket clientSoc;
+	Socket clientSoc;
 
-	static DataInputStream reader;
-	static DataOutputStream writer;
+	DataInputStream reader;
+	DataOutputStream writer;
 	Thread receive;
 	private JFrame frame;
-	private JTextField textField;
 	private JTextField email;
 	private JPasswordField password;
 
@@ -57,30 +56,8 @@ public class Client {
 		
 		JLabel lblBankAccount = new JLabel("Bank Account");
 		lblBankAccount.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblBankAccount.setBounds(152, 12, 161, 19);
+		lblBankAccount.setBounds(152, 30, 161, 19);
 		frame.getContentPane().add(lblBankAccount);
-		
-		JButton btnDeposit = new JButton("Deposit");
-		btnDeposit.setBounds(54, 195, 117, 25);
-		frame.getContentPane().add(btnDeposit);
-		
-		JButton btnWithdraw = new JButton("Withdraw");
-		btnWithdraw.setBounds(212, 195, 117, 25);
-		btnWithdraw.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(frame, "Withdraw money..");
-			}
-		});
-		frame.getContentPane().add(btnWithdraw);
-		
-		textField = new JTextField();
-		textField.setBounds(54, 164, 114, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("My Balance");
-		lblNewLabel.setBounds(218, 164, 95, 19);
-		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Register");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -89,7 +66,7 @@ public class Client {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton.setBounds(152, 245, 117, 25);
+		btnNewButton.setBounds(149, 178, 117, 25);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnLogin = new JButton("Login");
@@ -97,7 +74,7 @@ public class Client {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					
-					clientSoc = new Socket("localhost",9999);
+					clientSoc = new Socket("localhost",9997);
 					writer = new DataOutputStream(clientSoc.getOutputStream());
 					reader = new DataInputStream(clientSoc.getInputStream());
 					
@@ -119,8 +96,12 @@ public class Client {
 									String msg2[] = msg.split("#!#");
 									
 									if(msg2[0].equals("ok")){
-										JOptionPane.showMessageDialog(frame, msg2[1]);
+										JOptionPane.showMessageDialog(frame, msg);
+										frame.setVisible(false);
+										ClientActivity ca = new ClientActivity(clientSoc,reader,writer,msg);
 									}
+									
+									else JOptionPane.showMessageDialog(frame, msg2[1]);
 									
 								} catch (IOException e){
 									// TODO Auto-generated catch block

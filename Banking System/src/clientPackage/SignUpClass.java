@@ -61,6 +61,7 @@ public class SignUpClass {
 	
 	static DataInputStream reader ;
 	static DataOutputStream writer;
+	private JTextField balanceF2;
 	
    
 	
@@ -74,8 +75,8 @@ public class SignUpClass {
 		frame.getContentPane().setBackground(new Color(72, 209, 204));
 		frame.setBounds(100, 100, 567, 487);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
+		frame.getContentPane().setLayout(null);
 		
 		JLabel lblSignIn = new JLabel("Create a new account");
 		lblSignIn.setBounds(129, 47, 260, 26);
@@ -83,7 +84,7 @@ public class SignUpClass {
 		frame.getContentPane().add(lblSignIn);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setBounds(88, 109, 66, 20);
+		lblUsername.setBounds(66, 109, 88, 20);
 		frame.getContentPane().add(lblUsername);
 		
 		usernameField = new JTextField();
@@ -101,7 +102,7 @@ public class SignUpClass {
 		emailField.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(88, 186, 64, 14);
+		lblPassword.setBounds(66, 186, 86, 14);
 		frame.getContentPane().add(lblPassword);
 		
 		passwordField = new JPasswordField();
@@ -109,32 +110,55 @@ public class SignUpClass {
 		frame.getContentPane().add(passwordField);
 		
 		JLabel lblBirthday = new JLabel("Birthday");
-		lblBirthday.setBounds(90, 264, 86, 26);
+		lblBirthday.setBounds(88, 293, 86, 26);
 		lblBirthday.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frame.getContentPane().add(lblBirthday);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(207, 271, 54, 19);
+		comboBox.setBounds(209, 299, 54, 19);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Day","1","2","3","4,","5","6","7","8","9","10","11","12","13","14,","15","16","17","18","19","20"}));
 		frame.getContentPane().add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(271, 271, 66, 19);
+		comboBox_1.setBounds(273, 299, 66, 19);
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Month","1","2","3","4,","5","6","7","8","9","10","11","12"}));
 		frame.getContentPane().add(comboBox_1);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(347, 271, 55, 20);
+		comboBox_2.setBounds(350, 298, 55, 20);
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Year","1996","1996","1997","1998","1999","2000"}));
 		frame.getContentPane().add(comboBox_2);
 		
 		JRadioButton rdbtnMale = new JRadioButton("male");
-		rdbtnMale.setBounds(206, 313, 55, 20);
+		rdbtnMale.setBounds(209, 334, 55, 20);
 		frame.getContentPane().add(rdbtnMale);
 		
 		JRadioButton rdbtnFemale = new JRadioButton("female");
-		rdbtnFemale.setBounds(297, 313, 66, 21);
+		rdbtnFemale.setBounds(309, 334, 66, 21);
 		frame.getContentPane().add(rdbtnFemale);
+		
+		JButton signIn2 = new JButton("Sign in");
+		signIn2.setBounds(430, 50, 89, 23);
+		signIn2.setBackground(new Color(0, 139, 139));
+		frame.getContentPane().add(signIn2);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setBounds(90, 334, 68, 17);
+		lblGender.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		frame.getContentPane().add(lblGender);
+		
+		JLabel lblRetypePassword = new JLabel("Re-Type password");
+		lblRetypePassword.setBounds(60, 226, 136, 20);
+		frame.getContentPane().add(lblRetypePassword);
+		
+		passwordField2 = new JPasswordField();
+		passwordField2.setBounds(209, 218, 166, 28);
+		frame.getContentPane().add(passwordField2);
+		
+		balanceF2 = new JTextField();
+		balanceF2.setBounds(209, 258, 166, 29);
+		frame.getContentPane().add(balanceF2);
+		balanceF2.setColumns(10);
 		
 		ButtonGroup myButtonGroup = new ButtonGroup();
         myButtonGroup.add(rdbtnMale);
@@ -143,15 +167,15 @@ public class SignUpClass {
        // if(myButtonGroup.equals(rdbtnMale))
 		
 		JButton signUp2 = new JButton("Sign Up");
+		signUp2.setBounds(198, 373, 118, 35);
 		signUp2.setBackground(new Color(0, 191, 255));
 		signUp2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				counter++;
-				String gendar;
-				 if(myButtonGroup.equals(rdbtnMale)) {
-					 gendar = "male";
-				 }
-				 else gendar = "female";
+				
+				
+				String blnce = balanceF2.getText();
+				
 				
 				String username=usernameField.getText();
 				String email=emailField.getText();
@@ -178,7 +202,7 @@ public class SignUpClass {
 				//String mail = "^[a-z0-9._]+@[a-z.]+\\.[a-z]{2,}$";
 				//String pass = "^[a-zA-Z0-9_]{8,14}$";
 				
-				if(user_len>0 && email_len>0 && pass_len>0 && day!="Day" && month!="Month" && year!="Year" && (gendar.equals("male") || gendar.equals("female"))) {
+				if(user_len>0 && email_len>0 && pass_len>0 && day!="Day" && month!="Month" && year!="Year") {
 				
 					//Pattern p = Pattern.compile(user);
 					//Pattern p2 = Pattern.compile(mail);
@@ -200,14 +224,14 @@ public class SignUpClass {
 					
 								//2222222222222222222222222222222222222222222222222
 								if(password.equals(password2)) {
-									JOptionPane.showMessageDialog(frame,"Successfully SignUp");
+									
 									
 									try {
 										//xmlFile.writeXML(username,email,password,gendar, day+"/"+month+"/"+year);
-										Socket socket = new Socket("localhost", 9999);
+										Socket socket = new Socket("localhost", 9997);
 										writer = new DataOutputStream(socket.getOutputStream());
 										
-										writer.writeUTF("signUP"+"#!#"+username+"#!#"+email+"#!#"+password+"#!#"+gendar+"#!#"+day+"/"+month+"/"+year);
+										writer.writeUTF("signUp"+"#!#"+username+"#!#"+email+"#!#"+password+"#!#"+blnce+"#!#"+day+"/"+month+"/"+year);
 										
 									} catch (Exception e) {
 										// TODO Auto-generated catch block
@@ -228,40 +252,14 @@ public class SignUpClass {
 				else JOptionPane.showMessageDialog(frame, "Please fill up all the field.");
 			}
 		});
-		signUp2.setBounds(198, 373, 118, 35);
 		signUp2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		frame.getContentPane().add(signUp2);
 		
-		JButton signIn2 = new JButton("Sign in");
-		signIn2.setBackground(new Color(0, 139, 139));
-		signIn2.setBounds(430, 50, 89, 23);
-		frame.getContentPane().add(signIn2);
 		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGender.setBounds(100, 311, 68, 17);
-		frame.getContentPane().add(lblGender);
 		
-		JLabel lblRetypePassword = new JLabel("Re-Type password");
-		lblRetypePassword.setBounds(88, 226, 108, 20);
-		frame.getContentPane().add(lblRetypePassword);
-		
-		passwordField2 = new JPasswordField();
-		passwordField2.setBounds(209, 217, 166, 29);
-		frame.getContentPane().add(passwordField2);
-		
-		JButton btnShowAll = new JButton("show all");
-		
-		btnShowAll.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-							
-				
-				
-				
-			}
-		});
-		btnShowAll.setBounds(396, 382, 89, 23);
-		frame.getContentPane().add(btnShowAll);
+		JLabel lblNewLabel = new JLabel("initial balance");
+		lblNewLabel.setBounds(60, 258, 136, 23);
+		frame.getContentPane().add(lblNewLabel);
 		
 		
 		signIn2.addActionListener(new ActionListener() {
@@ -274,5 +272,4 @@ public class SignUpClass {
 		});
 		
 	}
-	
 }

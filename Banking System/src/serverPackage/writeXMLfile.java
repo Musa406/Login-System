@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
 public class writeXMLfile{
 
 	//public static String id ="0";
-	public void writeXML(String username, String email, String password, String gender, String dob) throws Exception {
+	public void writeXML(String username, String email, String password, String balance, String dob) throws Exception {
 		
 		
 		DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
@@ -32,8 +32,8 @@ public class writeXMLfile{
 		Element account=document.createElement("Account");
 		//account.setAttribute("id", id);
 		
-		String[] elementValue= {username,email,password,gender,dob};
-		String[] elementName= {"userName","Email","password","gender","dateOfBirth"};
+		String[] elementValue= {username,email,password,balance,dob};
+		String[] elementName= {"userName","Email","password","balance","dateOfBirth"};
 		
 		for(int i=0;i<elementValue.length;i++) {
 			

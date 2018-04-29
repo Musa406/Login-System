@@ -13,13 +13,15 @@ import java.io.IOException;
 
 public class ReadXML {
 		
-	public String uName;
+	public String eMail;
 	public String pass;
+	public String allInfo;
 	public static boolean flag; 
 	
-	public void ReadXml(String uName, String password ){
+	
+	public String ReadXml(String eMail, String password ){
 		
-		this.uName=uName;
+		this.eMail=eMail;
 		this.pass=password;
 		DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = null;
@@ -41,6 +43,8 @@ public class ReadXML {
 			
 		NodeList list=element.getChildNodes();
 		checkUserNameandPassword(list);
+		return allInfo;//......................................................
+		
 					
 	}
 
@@ -54,22 +58,25 @@ public class ReadXML {
 						
 				Element element1=(Element) node;
 				
-				String s1=element1.getElementsByTagName("userName").item(0).getTextContent();
+				String s1=element1.getElementsByTagName("Email").item(0).getTextContent();
 				String s2=element1.getElementsByTagName("password").item(0).getTextContent();
 				
-				if(s1.equals(uName)&&s2.equals(pass)) {
+				if(s1.equals(eMail)&&s2.equals(pass)) {
 					System.out.println("malta correct...");
 					flag=true;
+					String username = element1.getElementsByTagName("userName").item(0).getTextContent();
+					String eMail = element1.getElementsByTagName("Email").item(0).getTextContent();
+					String passWord = element1.getElementsByTagName("password").item(0).getTextContent();
+					String balance = element1.getElementsByTagName("balance").item(0).getTextContent();
+					String birth =  element1.getElementsByTagName("dateOfBirth").item(0).getTextContent();
+							
+					allInfo = username+"#!#"+eMail+"#!#"+birth+"#!#"+balance;
+					
 					return;
 				}
 				else 	System.out.println("malta match kore nai...");
-				System.out.println("userName:"+element1.getElementsByTagName("userName").item(0).getTextContent());
-				System.out.println("email:"+element1.getElementsByTagName("Email").item(0).getTextContent());
-				System.out.println("password:"+element1.getElementsByTagName("password").item(0).getTextContent());
-				System.out.println("gender:"+element1.getElementsByTagName("gender").item(0).getTextContent());
-				System.out.println("dateOfBirth:"+element1.getElementsByTagName("dateOfBirth").item(0).getTextContent());
-						
-				System.out.println();
+				
+				
 											
 			}
 		}
